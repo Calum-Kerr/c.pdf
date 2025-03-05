@@ -1,45 +1,23 @@
 import { useState } from 'react';
+import PDFRenderer from './components/PDFRenderer';
+import './styles/pdfViewer.css';
 
-function UploadPage() {
-  const [fileData, setFileData] = useState(null);
+export default function UploadPage() {
+  const [pdfData, setPdfData] = useState(null);
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (file && file.type === 'application/pdf') {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setFileData(e.target.result);
-      };
-      reader.readAsDataURL(file);
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (file?.type === 'application/pdf') {
+      const arrayBuffer = await file.arrayBuffer();
+      setPdfData(arrayBuffer.slice());
     }
-  };
-
-  const handleDownload = () => {
-    if (!fileData) return;
-    
-    const link = document.createElement('a');
-    link.href = fileData;
-    link.download = 'downloaded-file.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (
     <div>
-      <h2>PDF Upload</h2>
-      <input
-        type="file"
-        accept="application/pdf"
-        onChange={handleFileUpload}
-      />
-      {fileData && (
-        <button onClick={handleDownload}>
-          Download PDF
-        </button>
-      )}
+      <h2>PDF Viewer</h2>
+      <input type="file" accept="application/pdf" onChange={handleFileUpload} />
+      {pdfData && <PDFRenderer arrayBuffer={pdfData} />}
     </div>
   );
-}
-
-export default UploadPage; 
+} 

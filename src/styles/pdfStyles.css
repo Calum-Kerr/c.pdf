@@ -1,0 +1,47 @@
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.page-break {
+  height: 0;
+  page-break-after: always;
+  break-after: page;
+}
+
+.pdf-container {
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: visible;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.page-container {
+  background: white !important;
+  color: #000 !important;
+  mix-blend-mode: normal !important;
+  page-break-after: always;
+  transform-style: preserve-3d;
+  overflow: visible;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  letter-spacing: normal !important;
+}
+
+span {
+  position: absolute;
+  white-space: pre-wrap;
+  word-spacing: normal;
+  line-height: 1.2;
+  transform-origin: 0 0;
+  line-height: 1;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-weight: normal !important; /* Reset first */
+  pointer-events: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+} 

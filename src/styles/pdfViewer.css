@@ -1,0 +1,38 @@
+.pdf-viewer {
+  position: relative;
+  margin: 20px auto;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.controls {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.controls button {
+  padding: 5px 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.controls button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+canvas {
+  border: 1px solid #ddd;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} 
